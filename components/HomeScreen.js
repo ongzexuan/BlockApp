@@ -1,38 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Picker
+	StyleSheet,
+	Text,
+	View,
+	Dimensions,
+	Picker
 } from 'react-native';
 import {
-  Button
+	Button
 } from 'react-native-elements';
 import MapView from 'react-native-maps';
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './components/HomeScreen'
-import TestComponent from './components/TestComponent'
 
-class Main extends Component {
-  render() {
-    return(
-      <HomeScreen />
-    );
-  }
-}
-
-/*class HomeScreen extends Component {
-  constructor() {
-    super()
+class HomeScreen extends Component {
+constructor() {
+  super()
     this.state = {
       location: 'default',
       //default CMU region
@@ -86,7 +68,7 @@ class Main extends Component {
     this.updateLocation(newLocation.value)
   }*/
 
- /* onMarkerPress(e, value) {
+  onMarkerPress(e, value) {
     //console.log("Marker Pressed!")
     //setTimeout(
     //  () => {this.setState,500,{location:value}})
@@ -159,23 +141,9 @@ class Main extends Component {
       </View>
     );
   }
-}*/
+}
 
-const BlockApp = StackNavigator({
-  Home: {     
-    screen: Main 
-  }
-},
-//some strange hack to remove the headaer
-{
-    headerMode: 'none',
-    navigationOptions: {
-      headerVisible: false,
-    }
-  });
-export default BlockApp;
-
-AppRegistry.registerComponent('BlockApp', () => BlockApp);
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -234,4 +202,265 @@ const styles = StyleSheet.create({
   },
 });
 
+const autocompleteData = [
+  {
+    locationName:"iNoodle", 
+    value:"inoodle",
+    region: {
+      latitude: 40.4433854,
+      longitude: -79.9477742,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
+    },
+    description: "The best place in the world for asian food"
+  },
+  {
+    locationName:"Au Bon Pain", 
+    value:"abp",
+    region: {
+      latitude: 40.4440982,
+      longitude: -79.9443414,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
+    },
+    description: "We sell sandwiches and coffee"
+  },
+  {
+    locationName:"Exchange",
+    value:"exchange",
+    region: {
+      latitude: 40.4412224,
+      longitude: -79.9443474,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
+    },
+    description: "Tepper"
+  },
+  {
+    locationName:"Resnik Cafe",
+    value:"resnikcafe",
+    region: {
+      latitude: 40.4424393,
+      longitude: -79.9418867,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01
+    },
+    description: "Resnik Cafe"
+  }
+]
 
+const mapStyle = [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#523735"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#c9b2a6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#dcd2be"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#ae9e90"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#93817c"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#a5b076"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#447530"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#fdfcf8"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f8c967"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#e9bc62"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e98d58"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#db8555"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#806b63"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8f7d77"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#b9d3c2"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#92998d"
+      }
+    ]
+  }
+]
