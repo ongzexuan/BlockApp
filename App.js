@@ -8,24 +8,33 @@ import React, { Component } from 'react';
 import {
   AppRegistry
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, DrawerNavigator, NavigationAction } from 'react-navigation';
+//import HomeScreen from './components/HomeScreen';
 import HomeScreen from './components/HomeScreen';
 import TestComponent from './components/TestComponent';
 
-class Main extends Component {
+/*class Main extends Component {
   render() {
     return(
-      <HomeScreen />
+      <MainMenu />
     );
   }
-}
+}*/
+
+const MainMenu = DrawerNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Test: {
+    screen: TestComponent
+  }
+})
 
 const BlockApp = StackNavigator({
-  Home: {     
-    screen: Main 
+  Main: {     
+    screen: MainMenu 
   }
 },
-//some strange hack to remove the headaer
 {
     headerMode: 'none',
     navigationOptions: {

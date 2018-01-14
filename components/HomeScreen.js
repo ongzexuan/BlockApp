@@ -10,7 +10,6 @@ import {
 	Button
 } from 'react-native-elements';
 import MapView from 'react-native-maps';
-import { StackNavigator } from 'react-navigation';
 
 class HomeScreen extends Component {
 constructor() {
@@ -25,6 +24,8 @@ constructor() {
         longitudeDelta: 0.01
       }
     }
+
+    //I'm not too sure which actually need to be binded and which are redundant    
     this.onRegionChange = this.onRegionChange.bind(this)
     this.onMarkerPress = this.onMarkerPress.bind(this)
     this.updateState = this.updateState.bind(this)
@@ -42,7 +43,7 @@ constructor() {
     })
     this.onRegionChange(newLocation[0].region)
 
-    //update marker
+    //update markers?
 
   }
 
@@ -55,31 +56,15 @@ constructor() {
     this.setState({region});
   }
 
-  /*onMarkerPresss(coordinate, position) {
-    console.log("marker pressed!")
-    console.log(coordinate)
-    let newLocation = autocompleteData.filter((data) => {
-      return (
-        data.region.latitude === coordinate.latitude &&
-        data.region.longitude === coordinate.longitude
-      )
-    })    
-    
-    this.updateLocation(newLocation.value)
-  }*/
-
   onMarkerPress(e, value) {
-    //console.log("Marker Pressed!")
-    //setTimeout(
-    //  () => {this.setState,500,{location:value}})
+    //updates the location in the picker after a delay. 
+    //This strange hack allows the animation to finish first
     setTimeout(this.updateLocation,500,value)
-
-    //this.setState({location:value})
-    //this.updateLocation(value)
   }
 
   render() {
     const { region } = this.props;
+    const { navigate } = this.props.navigation;
 
     let locationList = autocompleteData.map((data) => {
       return (
@@ -107,9 +92,6 @@ constructor() {
           style={styles.map}
           region={this.state.region}
           customMapStyle={mapStyle}
-          //there should be a neater place to put the binding
-          //onRegionChange={() => this.onRegionChange.bind(this)}          
-          //onRegionChange={this.onRegionChange}
         >
           {markerList}
         </MapView>     
@@ -129,7 +111,7 @@ constructor() {
               backgroundColor="#00b587"
               raised
               large
-              onPress={f=>f}/>
+              onPress={() => this.props.navigation.navigate('DrawerOpen')}/>
             <Button 
               title="SELL A BLOCK" 
               backgroundColor="#ffc700"
@@ -144,6 +126,27 @@ constructor() {
 }
 
 export default HomeScreen;
+//export default MainMenu;
+
+/*class Screen1 extends Component {
+	render() {
+		return(
+			<Text>Something</Text>
+		);
+	}
+}
+
+const MainMenu = DrawerNavigator({
+	screen1: {screen: HomeScreen},
+	screen2: {screen: HomeScreen},
+	screen3: {screen: HomeScreen},
+	},
+	{
+	navigationOptions: {
+		headerLeft: <Text onPress={() => navigation.navigate('DrawerOpen')}>Menu</Text>	
+	}
+	
+})*/
 
 const styles = StyleSheet.create({
   container: {
