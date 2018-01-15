@@ -7,7 +7,8 @@ import {
 	Picker
 } from 'react-native';
 import {
-	Button
+	Button,
+	Icon
 } from 'react-native-elements';
 import MapView from 'react-native-maps';
 
@@ -31,6 +32,10 @@ constructor() {
     this.updateState = this.updateState.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
   }
+
+  static navigationOptions = {
+		title: 'Buy/Sell Blocks'
+	}
 
   updateLocation(value) {
     this.setState({location:value})
@@ -95,29 +100,40 @@ constructor() {
         >
           {markerList}
         </MapView>     
-        <View style={styles.overlay}> 
-          <View style={styles.selection_overlay}>
-            <Picker            
-              selectedValue={this.state.location}
-              onValueChange={(itemValue) => this.updateLocation(itemValue)}
-              mode='dropdown'
-              >            
-              {locationList}            
-            </Picker>
-          </View>
-          <View style={styles.buttons_overlay}>
-            <Button 
-              title="BUY A BLOCK" 
-              backgroundColor="#00b587"
-              raised
-              large
-              onPress={() => this.props.navigation.navigate('DrawerOpen')}/>
-            <Button 
-              title="SELL A BLOCK" 
-              backgroundColor="#ffc700"
-              raised
-              large
-              onPress={f=>f}/>
+        <View style={styles.overlay}>
+        	<View style={styles.header_overlay}>
+        	<Icon 
+        		name='menu'
+        		type='ionicons'
+        		onPress={() => this.props.navigation.navigate('DrawerOpen')}         		     		
+        		size={40}
+        		style={styles.header}
+        	/> 
+        	</View>
+          <View style={styles.overlay_body}>
+	          <View style={styles.selection_overlay}>
+	            <Picker            
+	              selectedValue={this.state.location}
+	              onValueChange={(itemValue) => this.updateLocation(itemValue)}
+	              mode='dropdown'
+	              >            
+	              {locationList}            
+	            </Picker>
+	          </View>
+	          <View style={styles.buttons_overlay}>
+	            <Button 
+	              title="BUY A BLOCK" 
+	              backgroundColor="#00b587"
+	              raised
+	              large
+	              onPress={() => this.props.navigation.navigate('DrawerOpen')}/>
+	            <Button 
+	              title="SELL A BLOCK" 
+	              backgroundColor="#ffc700"
+	              raised
+	              large
+	              onPress={f=>f}/>
+	          </View>
           </View>
         </View>
       </View>
@@ -159,6 +175,10 @@ const styles = StyleSheet.create({
   },
   overlay: {     
     height: Dimensions.get('window').height,    
+    justifyContent: 'flex-start'    
+  },
+  overlay_body: {     
+    height: Dimensions.get('window').height,    
     justifyContent: 'space-between'    
   },
   selection_overlay: { 
@@ -166,7 +186,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 50,
     marginRight: 50,
-    marginTop: 100,
+    marginTop: 80,
     padding: 5,
     backgroundColor: 'rgba(255,255,255,0.8)'
   },
@@ -176,12 +196,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 100,
+    marginBottom: 120,
     padding: 5
   },
   picker: {
     flex: 0,
     flexDirection: 'row'
+  },
+  header_overlay: {  	
+  	//height: 40,
+  	marginLeft: 10,
+  	marginTop: 10,
+  	alignItems: 'flex-start',
+  	justifyContent: 'center'
+  },
+  header: {
+  	
   },
   title: {
     fontSize: 20,

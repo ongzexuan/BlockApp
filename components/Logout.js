@@ -4,14 +4,14 @@ import {
 	Text
 } from 'react-native'
 
-export default class TestComponent extends Component {
+export default class Logout extends Component {
 	static navigationOptions = {
-		title: 'Test Component'
+		title: 'Log Out'
 	}
 
 	render() {
 		return (
-			<Text>Something TestComponent.js</Text>
+			<Text>Logout.js</Text>
 		);
 	}
 }

@@ -12,6 +12,8 @@ import { StackNavigator, DrawerNavigator, NavigationAction } from 'react-navigat
 //import HomeScreen from './components/HomeScreen';
 import HomeScreen from './components/HomeScreen';
 import TestComponent from './components/TestComponent';
+import Logout from './components/Logout';
+import Login from './components/Login';
 
 /*class Main extends Component {
   render() {
@@ -27,6 +29,12 @@ const MainMenu = DrawerNavigator({
   },
   Test: {
     screen: TestComponent
+  },
+  Logut: {
+    screen: Logout
+  },
+  Login: {
+    screen: Login
   }
 })
 
