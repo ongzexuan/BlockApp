@@ -14,6 +14,7 @@ import HomeScreen from './components/HomeScreen';
 import TestComponent from './components/TestComponent';
 import Logout from './components/Logout';
 import Login from './components/Login';
+import Signup from './components/Signup';
 
 /*class Main extends Component {
   render() {
@@ -30,17 +31,20 @@ const MainMenu = DrawerNavigator({
   Test: {
     screen: TestComponent
   },
-  Logut: {
-    screen: Logout
-  },
-  Login: {
-    screen: Login
+  Logout: {     
+    screen: Logout 
   }
 })
 
 const BlockApp = StackNavigator({
+  Login: {
+    screen: Login
+  },
   Main: {     
     screen: MainMenu 
+  },
+  Signup: {
+    screen: Signup
   }
 },
 {

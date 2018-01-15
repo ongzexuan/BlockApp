@@ -8,33 +8,27 @@ import {
 	Image
 } from 'react-native'
 
-export default class Login extends Component {
+export default class Signup extends Component {
 	static navigationOptions = {
-		title: 'Log In'
+		title: 'Sign Up'
 	}
 
 	render() {
 		return (
-			<View style={styles.login}>
-				<View style={styles.logo_container}>
-					<Image
-						style={styles.logo}
-						source={require('../assets/subra.jpg')}
-					/>
-				</View>
+			<View style={styles.login}>				
 				<TextInput style={styles.input}
 					autoCapitalize='none'
 					autoCorrect={false}
 					keyboardType='email-address'
 					returnKeyType='next'
-					placeholder='Email'
+					placeholder='AndrewID'
 					placeholderTextColor='rgba(0,0,0,0.7)'
 				/>
 				<TextInput style={styles.input}
 					autoCapitalize='none'
 					autoCorrect={false}				
 					returnKeyType='go'
-					placeholder='Password'
+					placeholder='Password (at least 8 characters)'
 					placeholderTextColor='rgba(0,0,0,0.7)'
 					secureTextEntry
 				/>
@@ -43,13 +37,13 @@ export default class Login extends Component {
 					style={styles.buttonContainer}
 					onPress={() => {this.props.navigation.navigate('Main')}}
 				>
-					<Text style={styles.buttonText}>LOGIN</Text>
+					<Text style={styles.buttonText}>SIGN UP</Text>
 				</TouchableOpacity>
 				<TouchableOpacity 
 					style={styles.signupButtonContainer}
-					onPress={() => {this.props.navigation.navigate('Signup')}}
+					onPress={() => {this.props.navigation.navigate('Login')}}
 				>
-					<Text style={styles.signup_buttonText}>Don't have an account? Sign up here</Text>
+					<Text style={styles.signup_buttonText}>Have an account? Login here</Text>
 				</TouchableOpacity>
 			</View>
 		);
@@ -61,7 +55,7 @@ const styles = StyleSheet.create({
 		padding: 50,
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'center'		
+		justifyContent: 'center'
 	},
 	logo: {
 
@@ -83,7 +77,7 @@ const styles = StyleSheet.create({
 		fontWeight: '700'		
 	},
 	buttonContainer: {
-		backgroundColor: '#2980b6',
+		backgroundColor: '#00b587',
 		paddingVertical: 15
 	},
 	signupButtonContainer: {
